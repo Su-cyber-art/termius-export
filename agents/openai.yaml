@@ -1,0 +1,4 @@
+interface:
+  display_name: "Termius SSH 导出"
+  short_description: "从本机 Termius 导出 SSH 连接、已保存密码及软件私钥"
+  default_prompt: "使用 $termius-export 导出本机 Termius 的 SSH 连接、密码和软件私钥，生成 JSON、CSV 与密钥文件。"

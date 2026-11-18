@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store
+
+# Local exports and database snapshots contain credentials.
+work/
+outputs/
+.termius-export-*/
+termius-snapshot-*/
+termius-export.json
+hosts.csv
+summary.json
+keys/
+file__0.indexeddb.*/

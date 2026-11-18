@@ -1,0 +1,28 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install IndexedDB reader
+        run: python -m pip install -r scripts/requirements.txt
+      - name: Test export behavior with synthetic data
+        run: python -m unittest discover -s scripts -p 'test_*.py' -v
+      - name: Test decryption behavior without native modules
+        run: node --test scripts/test_decrypt.cjs
+      - name: Check JavaScript syntax
+        run: node --check scripts/decrypt_termius.cjs
